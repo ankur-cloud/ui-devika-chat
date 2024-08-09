@@ -1,84 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
-    --primary: #2F3337;
+    --primary: #2f3337;
     --background: #ffffff;
     --secondary: #f1f2f5;
-    --tertiary: #919AA3;
+    --tertiary: #919aa3;
 
     --foreground: #303438;
     --foreground-invert: #ffffff;
-    --foreground-light: #9CA3AB;
-    --foreground-secondary: #9CA3AB;
+    --foreground-light: #9ca3ab;
+    --foreground-secondary: #9ca3ab;
 
-    --btn: #2F3337;
+    --btn: #2f3337;
     --btn-active: #000000;
 
-    --border: #E4E3E8;
-    --seperator: #E4E3E8;
+    --border: #e4e3e8;
+    --seperator: #e4e3e8;
 
-    --window-outline: #E4E3E8;
-    
-    --browser-window-dots: #E4E3E8;
-    --browser-window-search: #F7F8FA;
+    --window-outline: #e4e3e8;
+
+    --browser-window-dots: #e4e3e8;
+    --browser-window-search: #f7f8fa;
     --browser-window-ribbon: #ffffff;
     --browser-window-foreground: #303438;
-    --browser-window-background: #F7F8FA;
-    
-    --terminal-window-dots: #E4E3E8;
+    --browser-window-background: #f7f8fa;
+
+    --terminal-window-dots: #e4e3e8;
     --terminal-window-ribbon: #ffffff;
-    --terminal-window-background: #F7F8FA;
+    --terminal-window-background: #f7f8fa;
     --terminal-window-foreground: #313336;
 
-    --slider-empty: #9CA3AB;
-    --slider-filled: #2F3337;
+    --slider-empty: #9ca3ab;
+    --slider-filled: #2f3337;
     --slider-thumb: #303438;
 
-    --monologue-background: #F1F3F5;
-    --monologue-outline: #B2BAC2;
+    --monologue-background: #f1f3f5;
+    --monologue-outline: #b2bac2;
   }
-  .dark{
-      --primary: #ECECEC;
-      --background: #1D1F21;
-      --secondary: #2F3337;
-      --tertiary: #81878C;
-  
-      --foreground: #dcdcdc;
-      --foreground-invert: #1D1F21;
-      --foreground-light: #E6E9EB;
-      --foreground-secondary: #9CA3AB;
+  .dark {
+    --primary: #ececec;
+    --background: #1d1f21;
+    --secondary: #2f3337;
+    --tertiary: #81878c;
 
-      --btn: #ECECEC;
-      --btn-active: #ffffff;
-  
-      --border: #2B2F34;
-      --seperator: #495058;
-  
-      --window-outline: #4E555D;
-      
-      --browser-window-dots: #191C1E;
-      --browser-window-search: #1D2124;
-      --browser-window-ribbon: #292E32;
-      --browser-window-foreground: #DDDFE1;
-      --browser-window-background: #111315;
+    --foreground: #dcdcdc;
+    --foreground-invert: #1d1f21;
+    --foreground-light: #e6e9eb;
+    --foreground-secondary: #9ca3ab;
 
-      --terminal-window-dots: #191C1E;
-      --terminal-window-ribbon: #292E32;
-      --terminal-window-background: #111315;
-      --terminal-window-foreground: #9CA3AB;
+    --btn: #ececec;
+    --btn-active: #ffffff;
 
-      --slider-empty: #2F3337;
-      --slider-filled: #81878C;
-      --slider-thumb: #ffffff;
-  
-      --monologue-background: #242729;
-      --monologue-outline: #464C51;
+    --border: #2b2f34;
+    --seperator: #495058;
+
+    --window-outline: #4e555d;
+
+    --browser-window-dots: #191c1e;
+    --browser-window-search: #1d2124;
+    --browser-window-ribbon: #292e32;
+    --browser-window-foreground: #dddfe1;
+    --browser-window-background: #111315;
+
+    --terminal-window-dots: #191c1e;
+    --terminal-window-ribbon: #292e32;
+    --terminal-window-background: #111315;
+    --terminal-window-foreground: #9ca3ab;
+
+    --slider-empty: #2f3337;
+    --slider-filled: #81878c;
+    --slider-thumb: #ffffff;
+
+    --monologue-background: #242729;
+    --monologue-outline: #464c51;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
@@ -86,13 +86,13 @@
   body {
     @apply bg-background text-foreground;
   }
-  
+
   /* Styling for scrollbar */
 
   /* WebKit (Chrome, Safari) */
   *::-webkit-scrollbar {
     width: 5px;
-    height: 2px
+    height: 2px;
   }
   *::-webkit-scrollbar-thumb {
     background: #999797;
@@ -100,28 +100,28 @@
   }
   *::-webkit-scrollbar-thumb:hover {
     background: #6b7280;
-  } 
+  }
 
   /* firefox  */
   @-moz-document url-prefix() {
-  :global(*) {
-    scrollbar-width: thin;
-    scrollbar-color: #999797 #FFFFFF;
-  }
+    :global(*) {
+      scrollbar-width: thin;
+      scrollbar-color: #999797 #ffffff;
+    }
 
-  :global(*::-moz-scrollbar) {
-    width: 5px;
-  }
+    :global(*::-moz-scrollbar) {
+      width: 5px;
+    }
 
-  :global(*::-moz-scrollbar-thumb) {
-    background: #999797;
-    border-radius: 0.5rem;
-  }
+    :global(*::-moz-scrollbar-thumb) {
+      background: #999797;
+      border-radius: 0.5rem;
+    }
 
-  :global(*::-moz-scrollbar-thumb:hover) {
-    background: #6b7280;
+    :global(*::-moz-scrollbar-thumb:hover) {
+      background: #6b7280;
+    }
   }
-}
 
   /* Internet Explorer/Edge */
   :global(*::-ms-scrollbar) {

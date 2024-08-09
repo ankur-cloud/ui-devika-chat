@@ -49,13 +49,13 @@ export async function initializeEditorRef(monaco, container) {
 export function createModel(monaco, file) {
   const model = monaco.editor.createModel(
     file.code,
-    getFileLanguage(file.file.split(".").pop())
+    getFileLanguage(file.file.split(".").pop()),
   );
   return model;
 }
 
 export function disposeEditor(editor) {
-  if(editor) editor.dispose();
+  if (editor) editor.dispose();
 }
 
 export function enableTabSwitching(editor, models, tabContainer) {
@@ -63,10 +63,11 @@ export function enableTabSwitching(editor, models, tabContainer) {
   Object.keys(models).forEach((filename, index) => {
     const tabElement = document.createElement("div");
     tabElement.textContent = filename.split("/").pop();
-    tabElement.className = "tab p-2 me-2 rounded-lg text-sm cursor-pointer hover:bg-secondary text-primary whitespace-nowrap";
+    tabElement.className =
+      "tab p-2 me-2 rounded-lg text-sm cursor-pointer hover:bg-secondary text-primary whitespace-nowrap";
     tabElement.setAttribute("data-filename", filename);
     tabElement.addEventListener("click", () =>
-      switchTab(editor, models, filename, tabElement)
+      switchTab(editor, models, filename, tabElement),
     );
     if (index === Object.keys(models).length - 1) {
       tabElement.classList.add("bg-secondary");
@@ -105,17 +106,18 @@ export function sidebar(editor, models, sidebarContainer) {
   };
 
   const changeTabColor = (index) => {
-    const allTabElements = document.querySelectorAll("#tabContainer")[0].children;
+    const allTabElements =
+      document.querySelectorAll("#tabContainer")[0].children;
     for (let i = 0; i < allTabElements?.length; i++) {
       allTabElements[i].classList.remove("bg-secondary");
     }
     allTabElements[index].classList.add("bg-secondary");
-  }
+  };
 
   const folders = {};
 
   Object.entries(models).forEach(([filename, model], modelIndex) => {
-    const parts = filename.split('/');
+    const parts = filename.split("/");
     let currentFolder = sidebarContainer;
 
     parts.forEach((part, index) => {
