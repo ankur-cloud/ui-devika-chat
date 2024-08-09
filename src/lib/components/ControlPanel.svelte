@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
   import {
     projectList,
     modelList,
@@ -13,7 +13,7 @@
     selectedProject,
     selectedModel,
     selectedSearchEngine,
-  } from '$lib/store';
+  } from "$lib/store";
   import {
     createProject,
     fetchMessages,
@@ -21,27 +21,27 @@
     deleteProject,
     fetchProjectFiles,
     fetchAgentState,
-  } from '$lib/api';
-  import Seperator from './ui/Seperator.svelte';
+  } from "$lib/api";
+  import Seperator from "./ui/Seperator.svelte";
 
   function selectProject(project) {
     $selectedProject = project;
     fetchMessages();
     fetchAgentState();
     fetchProjectFiles();
-    document.getElementById('project-dropdown').classList.add('hidden');
+    document.getElementById("project-dropdown").classList.add("hidden");
   }
   function selectModel(model) {
     $selectedModel = model;
-    document.getElementById('model-dropdown').classList.add('hidden');
+    document.getElementById("model-dropdown").classList.add("hidden");
   }
   function selectSearchEngine(searchEngine) {
     $selectedSearchEngine = searchEngine;
-    document.getElementById('search-engine-dropdown').classList.add('hidden');
+    document.getElementById("search-engine-dropdown").classList.add("hidden");
   }
 
   async function createNewProject() {
-    const projectName = prompt('Enter the project name:');
+    const projectName = prompt("Enter the project name:");
     if (projectName) {
       await createProject(projectName);
       selectProject(projectName);
@@ -59,15 +59,15 @@
       agentState.set(null);
       tokenUsage.set(0);
       isSending.set(false);
-      $selectedProject = 'Select Project';
-      localStorage.setItem('selectedProject', '');
+      $selectedProject = "Select Project";
+      localStorage.setItem("selectedProject", "");
     }
   }
 
   const dropdowns = [
-    { dropdown: 'project-dropdown', button: 'project-button' },
-    { dropdown: 'model-dropdown', button: 'model-button' },
-    { dropdown: 'search-engine-dropdown', button: 'search-engine-button' },
+    { dropdown: "project-dropdown", button: "project-button" },
+    { dropdown: "model-dropdown", button: "model-button" },
+    { dropdown: "search-engine-dropdown", button: "search-engine-button" },
   ];
   function closeDropdowns(event) {
     dropdowns.forEach(({ dropdown, button }) => {
@@ -80,7 +80,7 @@
         !dropdownElement.contains(event.target) &&
         !buttonElement.contains(event.target)
       ) {
-        dropdownElement.classList.add('hidden');
+        dropdownElement.classList.add("hidden");
       }
     });
   }
@@ -92,14 +92,14 @@
     })();
 
     dropdowns.forEach(({ dropdown, button }) => {
-      document.getElementById(button).addEventListener('click', function () {
+      document.getElementById(button).addEventListener("click", function () {
         const dropdownElement = document.getElementById(dropdown);
-        dropdownElement.classList.toggle('hidden');
+        dropdownElement.classList.toggle("hidden");
       });
     });
-    document.addEventListener('click', closeDropdowns);
+    document.addEventListener("click", closeDropdowns);
     return () => {
-      document.removeEventListener('click', closeDropdowns);
+      document.removeEventListener("click", closeDropdowns);
     };
   });
 </script>
@@ -313,6 +313,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0.5rem;
   }
 
   .control-panel > *:not(:first-child) {

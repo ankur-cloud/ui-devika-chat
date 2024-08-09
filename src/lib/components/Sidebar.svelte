@@ -1,23 +1,34 @@
 <script>
-  import SidebarButton from './ui/SidebarButton.svelte';
-  import { page } from '$app/stores';
-  import { Icons } from './../icons';
+  import SidebarButton from "./ui/SidebarButton.svelte";
+  import { page } from "$app/stores";
+  import { Icons } from "./../icons";
 
   let navItems = [
     {
       icon: Icons.HOME,
-      tooltip: 'Home',
-      route: '/',
+      tooltip: "Home",
+      route: "/",
     },
+
     {
       icon: Icons.SETTINGS,
-      tooltip: 'Settings',
-      route: '/settings',
+      tooltip: "Settings",
+      route: "/settings",
     },
     {
       icon: Icons.LOGS,
-      tooltip: 'Logs',
-      route: '/logs',
+      tooltip: "Logs",
+      route: "/logs",
+    },
+    {
+      icon: Icons.SearchIcon,
+      tooltip: "Search",
+      route: "/search",
+    },
+    {
+      icon: Icons.FlowChartIcon,
+      tooltip: "convert",
+      route: "/convert",
     },
   ];
 </script>
@@ -34,3 +45,7 @@
     />
   {/each}
 </div>
+;
+
+<style>
+</style>

@@ -1,16 +1,16 @@
 <script>
-  import { onMount } from 'svelte';
-  import { Terminal } from '@xterm/xterm';
-  import { FitAddon } from '@xterm/addon-fit';
-  import { agentState } from '$lib/store';
-  import '@xterm/xterm/css/xterm.css';
+  import { onMount } from "svelte";
+  import { Terminal } from "@xterm/xterm";
+  import { FitAddon } from "@xterm/addon-fit";
+  import { agentState } from "$lib/store";
+  import "@xterm/xterm/css/xterm.css";
 
   onMount(async () => {
     const terminalBg = getComputedStyle(document.body).getPropertyValue(
-      '--terminal-window-background'
+      "--terminal-window-background"
     );
     const terminalFg = getComputedStyle(document.body).getPropertyValue(
-      '--terminal-window-foreground'
+      "--terminal-window-foreground"
     );
 
     const terminal = new Terminal({
@@ -30,7 +30,7 @@
     const fitAddon = new FitAddon();
 
     terminal.loadAddon(fitAddon);
-    terminal.open(document.getElementById('terminal-content'));
+    terminal.open(document.getElementById("terminal-content"));
 
     fitAddon.fit();
 
@@ -39,8 +39,8 @@
     agentState.subscribe((state) => {
       if (state && state.terminal_session) {
         let command = state.terminal_session.command || 'echo "Waiting..."';
-        let output = state.terminal_session.output || 'Waiting...';
-        let title = state.terminal_session.title || 'Terminal';
+        let output = state.terminal_session.output || "Waiting...";
+        let title = state.terminal_session.title || "Terminal";
 
         // Check if the current state is different from the previous state
         if (
@@ -50,7 +50,7 @@
         ) {
           // addCommandAndOutput(command, output, title);
           if (title) {
-            document.getElementById('terminal-title').innerText = title;
+            document.getElementById("terminal-title").innerText = title;
           }
           terminal.reset();
           terminal.write(`$ ${command}\r\n\r\n${output}\r\n`);
@@ -68,7 +68,7 @@
 </script>
 
 <div
-  class="w-full h-full flex flex-col border-[3px] overflow-hidden rounded-xl border-window-outline"
+  class="w-full h-full flex flex-col border-[3px] overflow-hidden rounded-xl border-card-window-outline"
 >
   <div class="flex items-center p-2 border-b bg-terminal-window-ribbon">
     <div class="flex ml-2 mr-4 space-x-2">

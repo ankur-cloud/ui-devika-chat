@@ -1,6 +1,6 @@
 <script>
-  export let href = '';
-  export let tooltip = '';
+  export let href = "";
+  export let tooltip = "";
   export let isSelected = false;
   export let icon;
 </script>
@@ -8,8 +8,8 @@
 <a {href}>
   <div class="nav-button relative">
     <button
-      class={`flex justify-center w-full hover:transition-colors ${
-        isSelected ? 'text-btn-active' : 'text-tertiary'
+      class={`flex justify-center w-full color-sidebar-icon-color hover:transition-colors ${
+        isSelected ? "text-btn-active" : "text-sidebar-element"
       }`}
     >
       {@html icon}
@@ -19,6 +19,7 @@
 </a>
 
 <style>
+  @import "../../../app.pcss";
   .tooltip {
     font-size: 12px;
     background-color: black;

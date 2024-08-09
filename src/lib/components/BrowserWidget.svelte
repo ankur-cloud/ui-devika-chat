@@ -1,16 +1,16 @@
 <script>
-  import { agentState } from '$lib/store';
-  import { API_BASE_URL, socket } from '$lib/api';
+  import { agentState } from "$lib/store";
+  import { API_BASE_URL, socket } from "$lib/api";
 
-  socket.on('screenshot', function (msg) {
-    const data = msg['data'];
-    const img = document.querySelector('.browser-img');
+  socket.on("screenshot", function (msg) {
+    const data = msg["data"];
+    const img = document.querySelector(".browser-img");
     img.src = `data:image/png;base64,${data}`;
   });
 </script>
 
 <div
-  class="w-full h-full flex flex-col border-[3px] rounded-xl overflow-y-auto bg-browser-window-background border-window-outline"
+  class="w-full h-full flex flex-col border-[3px] rounded-xl overflow-y-auto bg-browser-window-background border-card-window-outline"
 >
   <div
     class="p-2 flex items-center border-b border-border bg-browser-window-ribbon h-12"
@@ -23,17 +23,17 @@
     <input
       type="text"
       id="browser-url"
-      class="flex-grow h-7 text-xs rounded-lg p-2 overflow-x-auto bg-browser-window-search text-browser-window-foreground"
+      class="flex-grow h-7 text-xs rounded-lg p-2 overflow-x-auto bg-browser-window-search text-browser-window-foreground bg-secondary"
       placeholder="devika://newtab"
-      value={$agentState?.browser_session.url || ''}
+      value={$agentState?.browser_session.url || ""}
     />
   </div>
-  <div id="browser-content" class="flex-grow overflow-y-auto">
+  <div id="browser-content" class="flex-grow overflow-y-auto bg-secondary">
     {#if $agentState?.browser_session.screenshot}
       <img
         class="browser-img"
         src={API_BASE_URL +
-          '/api/get-browser-snapshot?snapshot_path=' +
+          "/api/get-browser-snapshot?snapshot_path=" +
           $agentState?.browser_session.screenshot}
         alt="Browser snapshot"
       />

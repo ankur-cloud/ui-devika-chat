@@ -1,5 +1,5 @@
 <script>
-  import { onDestroy, onMount } from 'svelte';
+  import { onDestroy, onMount } from "svelte";
   import {
     initializeMonaco,
     initializeEditorRef,
@@ -7,9 +7,9 @@
     disposeEditor,
     enableTabSwitching,
     sidebar,
-  } from './MonacoEditor';
-  import { socket } from '$lib/api';
-  import { projectFiles } from '$lib/store';
+  } from "./MonacoEditor";
+  import { socket } from "$lib/api";
+  import { projectFiles } from "$lib/store";
 
   let monaco;
   let models = {};
@@ -59,8 +59,8 @@
 
   onMount(async () => {
     await initializeEditor();
-    socket.on('code', async function (data) {
-      if (data.from === 'coder') {
+    socket.on("code", async function (data) {
+      if (data.from === "coder") {
         reCreateEditor(data.files);
       } else {
         patchOrFeature(data.files);
@@ -85,7 +85,7 @@
 </script>
 
 <div
-  class="w-full h-full flex flex-1 flex-col border-[3px] overflow-hidden rounded-xl border-window-outline p-0"
+  class="w-full h-full flex flex-1 flex-col border-[3px] overflow-hidden rounded-xl border-card-window-outline p-0"
 >
   <div class="flex items-center p-2 border-b bg-terminal-window-ribbon">
     <div class="flex ml-2 mr-4 space-x-2">
