@@ -6,9 +6,8 @@ import { get } from "svelte/store";
 let prevMonologue = null;
 
 export function initializeSockets() {
-
   socket.connect();
-  
+
   let state = get(agentState);
   prevMonologue = state?.internal_monologue;
 
@@ -18,7 +17,7 @@ export function initializeSockets() {
   });
 
   socket.on("server-message", function (data) {
-    console.log(data)
+    console.log(data);
     messages.update((msgs) => [...msgs, data["messages"]]);
   });
 
@@ -54,7 +53,6 @@ export function initializeSockets() {
     }
   });
 
-  
   agentState.subscribe((state) => {
     function handleMonologueChange(newValue) {
       if (newValue) {

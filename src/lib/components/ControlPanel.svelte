@@ -1,7 +1,27 @@
 <script>
   import { onMount } from "svelte";
-  import { projectList, modelList, internet, tokenUsage, agentState, messages, searchEngineList, serverStatus, isSending, selectedProject, selectedModel, selectedSearchEngine} from "$lib/store";
-  import { createProject, fetchMessages, fetchInitialData, deleteProject,fetchProjectFiles, fetchAgentState} from "$lib/api";
+  import {
+    projectList,
+    modelList,
+    internet,
+    tokenUsage,
+    agentState,
+    messages,
+    searchEngineList,
+    serverStatus,
+    isSending,
+    selectedProject,
+    selectedModel,
+    selectedSearchEngine,
+  } from "$lib/store";
+  import {
+    createProject,
+    fetchMessages,
+    fetchInitialData,
+    deleteProject,
+    fetchProjectFiles,
+    fetchAgentState,
+  } from "$lib/api";
   import Seperator from "./ui/Seperator.svelte";
 
   function selectProject(project) {
@@ -21,7 +41,7 @@
   }
 
   async function createNewProject() {
-    const projectName = prompt('Enter the project name:');
+    const projectName = prompt("Enter the project name:");
     if (projectName) {
       await createProject(projectName);
       selectProject(projectName);
@@ -29,7 +49,6 @@
       messages.set([]);
       agentState.set(null);
       isSending.set(false);
-
     }
   }
   async function deleteproject(project) {
@@ -66,9 +85,8 @@
     });
   }
   onMount(() => {
-    
     (async () => {
-      if(serverStatus){
+      if (serverStatus) {
         await fetchInitialData();
       }
     })();
@@ -84,7 +102,6 @@
       document.removeEventListener("click", closeDropdowns);
     };
   });
-  
 </script>
 
 <div class="control-panel border-b border-border bg-background pb-3">
@@ -107,7 +124,7 @@
       aria-labelledby="project-button"
       tabindex="-1"
     >
-      <div role="none" class="flex flex-col divide-y-2  w-full">
+      <div role="none" class="flex flex-col divide-y-2 w-full">
         <button
           class="flex gap-2 items-center text-sm px-4 py-3 w-full"
           on:click|preventDefault={createNewProject}
@@ -118,7 +135,8 @@
         {#if $projectList !== null}
           {#each $projectList as project}
             <div
-              class="flex items-center px-4 hover:bg-black/20 transition-colors">
+              class="flex items-center px-4 hover:bg-black/20 transition-colors"
+            >
               <button
                 href="#"
                 class="flex gap-2 items-center text-sm py-3 w-full h-full overflow-x-visible"
@@ -137,22 +155,25 @@
       </div>
     </div>
   </div>
-  <div
-    class=""
-    style="display: flex; align-items: center; gap: 20px"
-  >
+  <div class="" style="display: flex; align-items: center; gap: 20px">
     <div class="flex items-center gap-2 text-sm">
       <span>Internet:</span>
-      <span class=" size-3 rounded-full" class:online={$internet} class:offline={!$internet}></span>
+      <span
+        class=" size-3 rounded-full"
+        class:online={$internet}
+        class:offline={!$internet}
+      ></span>
     </div>
 
     <Seperator />
 
     <div class="flex items-center gap-2 text-sm">
       <span>Token Usage:</span>
-      <span id="token-count" class="token-count-animation text-foreground">{$tokenUsage}</span>
+      <span id="token-count" class="token-count-animation text-foreground"
+        >{$tokenUsage}</span
+      >
     </div>
-    
+
     <div class="relative inline-block text-left">
       <div>
         <button
@@ -226,8 +247,8 @@
                 <div class="flex flex-col gap-[1px] px-6 w-full">
                   {#each modelItems as models}
                     <button
-                      class="relative nav-button flex text-start text-sm text-clip hover:bg-black/20 px-2 py-1.5 rounded-md transition-colors 
-                      {selectedModel == models[0] ? 'bg-gray-300': ''}"
+                      class="relative nav-button flex text-start text-sm text-clip hover:bg-black/20 px-2 py-1.5 rounded-md transition-colors
+                      {selectedModel == models[0] ? 'bg-gray-300' : ''}"
                       on:click|preventDefault={() => selectModel(models[0])}
                     >
                       {models[0]}
@@ -292,6 +313,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0.5rem;
   }
 
   .control-panel > *:not(:first-child) {

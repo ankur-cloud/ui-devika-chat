@@ -1,29 +1,29 @@
 <script>
-  import { onDestroy, onMount } from "svelte";
-  import { toast } from "svelte-sonner";
+  import { onDestroy, onMount } from 'svelte';
+  import { toast } from 'svelte-sonner';
 
-  import ControlPanel from "$lib/components/ControlPanel.svelte";
-  import MessageContainer from "$lib/components/MessageContainer.svelte";
-  import MessageInput from "$lib/components/MessageInput.svelte";
-  import BrowserWidget from "$lib/components/BrowserWidget.svelte";
-  import TerminalWidget from "$lib/components/TerminalWidget.svelte";
-  import EditorWidget from "../lib/components/EditorWidget.svelte";
-  import * as Resizable from "$lib/components/ui/resizable/index.js";
+  import ControlPanel from '$lib/components/ControlPanel.svelte';
+  import MessageContainer from '$lib/components/MessageContainer.svelte';
+  import MessageInput from '$lib/components/MessageInput.svelte';
+  import BrowserWidget from '$lib/components/BrowserWidget.svelte';
+  import TerminalWidget from '$lib/components/TerminalWidget.svelte';
+  import EditorWidget from '../lib/components/EditorWidget.svelte';
+  import * as Resizable from '$lib/components/ui/resizable/index.js';
 
-  import { serverStatus } from "$lib/store";
-  import { initializeSockets, destroySockets } from "$lib/sockets";
-  import { checkInternetStatus, checkServerStatus } from "$lib/api";
+  import { serverStatus } from '$lib/store';
+  import { initializeSockets, destroySockets } from '$lib/sockets';
+  import { checkInternetStatus, checkServerStatus } from '$lib/api';
 
   let resizeEnabled =
-    localStorage.getItem("resize") &&
-    localStorage.getItem("resize") === "enable";
+    localStorage.getItem('resize') &&
+    localStorage.getItem('resize') === 'enable';
 
   onMount(() => {
     const load = async () => {
       await checkInternetStatus();
 
-      if(!(await checkServerStatus())) {
-        toast.error("Failed to connect to server");
+      if (!(await checkServerStatus())) {
+        toast.error('Failed to connect to server');
         return;
       }
       serverStatus.set(true);

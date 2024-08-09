@@ -50,8 +50,11 @@
     const sanitizedMessage = DOMPurify.sanitize(messageInput);
     const escapedMessage = escapeHTML(sanitizedMessage);
 
-
-    if (messageInput.trim() !== "" && escapedMessage.trim() !== "" && isSending) {
+    if (
+      messageInput.trim() !== "" &&
+      escapedMessage.trim() !== "" &&
+      isSending
+    ) {
       $isSending = true;
       emitMessage("user-message", {
         message: escapedMessage,
@@ -79,20 +82,20 @@
 
 <div class="flex flex-col gap-2">
   <div class="flex gap-4 justify-between">
-    <div class="px-1 rounded-md text-xs">
+    <div class="px-1 rounded-md message-font-header">
       Agent status:
       {#if $agentState !== null}
         {#if $agentState.agent_is_active}
-          <span class="text-green-500">Active</span>
+          <span class="text-green-500 r">Active</span>
         {:else}
           <span class="text-orange-600">Inactive</span>
         {/if}
       {:else}
-        Deactive
+        <span class="text-orange-600">Deactive</span>
       {/if}
     </div>
     <!-- {#if $agentState !== null} -->
-    <div class="px-1 rounded-md text-xs">
+    <div class="px-1 rounded-md message-font-header">
       Model Inference: <span class="text-orange-600">{inference_time} sec</span>
     </div>
     <!-- {/if} -->
@@ -134,5 +137,11 @@
     min-height: 60px;
     max-height: 200px;
     resize: none;
+  }
+
+  .message-font-header {
+    color: #ffff00;
+    font-weight: 600;
+    font-size: 0.8rem;
   }
 </style>

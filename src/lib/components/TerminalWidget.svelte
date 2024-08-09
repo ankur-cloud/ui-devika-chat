@@ -24,7 +24,7 @@
         innerText: terminalFg,
         cursor: terminalFg,
         selectionForeground: terminalBg,
-        selectionBackground: terminalFg
+        selectionBackground: terminalFg,
       },
     });
     const fitAddon = new FitAddon();
@@ -68,7 +68,7 @@
 </script>
 
 <div
-  class="w-full h-full flex flex-col border-[3px] overflow-hidden rounded-xl border-window-outline"
+  class="w-full h-full flex flex-col border-[3px] overflow-hidden rounded-xl border-card-window-outline"
 >
   <div class="flex items-center p-2 border-b bg-terminal-window-ribbon">
     <div class="flex ml-2 mr-4 space-x-2">
@@ -80,7 +80,7 @@
   </div>
   <div
     id="terminal-content"
-    class="w-full h-full rounded-bl-lg bg-terminal-window-background "
+    class="w-full h-full rounded-bl-lg bg-terminal-window-background"
   ></div>
 </div>
 
@@ -90,7 +90,6 @@
   }
   #terminal-content :global(.xterm-screen) {
     width: 100% !important;
-
   }
   #terminal-content :global(.xterm-rows) {
     width: 100% !important;

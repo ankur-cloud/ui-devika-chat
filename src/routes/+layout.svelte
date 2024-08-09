@@ -6,10 +6,16 @@
 </script>
 
 <main>
-  <div class="h-dvh w-full flex">
-      <Toaster richColors/>
-      <ModeWatcher />
-      <Sidebar />
-      <slot />
+  <div class="h-dvh w-full flex app-container">
+    <Toaster richColors />
+    <ModeWatcher />
+    <Sidebar />
+    <slot />
   </div>
 </main>
+
+<style>
+  .app-container {
+    background: linear-gradient(to bottom right, rgba(74, 74, 74), transparent);
+  }
+</style>
